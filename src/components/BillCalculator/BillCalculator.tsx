@@ -13,7 +13,7 @@ interface Props {
 
 export default function BillCalculator({
   totalAmount,
-  tipAmount,
+  // tipAmount,
   numberOfPeople,
   setTipAmount,
   setTotalAmount,
@@ -66,7 +66,7 @@ export default function BillCalculator({
             required
             min={1}
             className="placeholder:text-right pr-4 focus:outline-none active:border-none p-2 w-full bg-transparent "
-            value={totalAmount}
+            value={totalAmount ?? ""}
             onChange={(e) => handleTotalChange(e)}
           />
         </div>

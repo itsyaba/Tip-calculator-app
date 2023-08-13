@@ -14,14 +14,17 @@ export default function Result({
   totalAmount,
   tipAmount,
   numberOfPeople,
-  setTipAmount , 
-  setTotalAmount , 
-  setNumberOfPeople
+  setTipAmount,
+  setTotalAmount,
+  setNumberOfPeople,
 }: Props) {
-  const [tipAmountPerPerson, setTipAmountPerPerson] = useState(parseFloat(0).toFixed(2));
-  const [totalAmountPerPerson, setTotalAmountPerPerson] = useState<number>(parseFloat(0).toFixed(2));
+  // const [tipAmountPerPerson, setTipAmountPerPerson] = useState(0.toFixed(2));
+  const [tipAmountPerPerson, setTipAmountPerPerson] = useState((0).toFixed(2));
+  const [totalAmountPerPerson, setTotalAmountPerPerson] = useState(
+    (0).toFixed(2)
+  );
   const [totalTipAmount, setTotalTipAmount] = useState(0);
-  const [disable , setDisable] = useState(true)
+  const [disable, setDisable] = useState(true);
   // const [totalAmountAfterCC, setTotalAmountAfterCC] = useState();
 
   useEffect(() => {
@@ -31,33 +34,30 @@ export default function Result({
         const finaleTip = tipAmountRes / numberOfPeople;
         setTotalTipAmount(tipAmountRes);
 
-        // console.log(tipAmountRes , finaleTip);
-        setTipAmountPerPerson(parseFloat(finaleTip).toFixed(2));
+        setTipAmountPerPerson(finaleTip.toFixed(2));
       }
       if (!tipAmount) {
         const ttAmountAfterCC = totalAmount / numberOfPeople;
-        setTotalAmountPerPerson(parseFloat(ttAmountAfterCC).toFixed(2));
+        setTotalAmountPerPerson(ttAmountAfterCC.toFixed(2));
       }
 
       // total per person
       const TPP = (totalAmount + totalTipAmount) / numberOfPeople;
-      setTotalAmountPerPerson(parseFloat(TPP).toFixed(2));
+      setTotalAmountPerPerson(TPP.toFixed(2));
 
-      setDisable(false)
-
+      setDisable(false);
     }
   }, [numberOfPeople, tipAmount, totalAmount, totalTipAmount]);
 
-  const resetHandeler = () => { 
-    setNumberOfPeople("")
-    setTipAmount("")
-    setTotalAmount("")
-    setTipAmountPerPerson(parseFloat(0).toFixed(2))
-    setTotalAmountPerPerson(parseFloat(0).toFixed(2))
-    setDisable(true)
-    
-  }
-  
+  const resetHandeler = () => {
+    setNumberOfPeople(undefined);
+    setTipAmount(undefined);
+    setTotalAmount(undefined);
+    setTipAmountPerPerson((0).toFixed(2));
+    setTotalAmountPerPerson((0).toFixed(2));
+    setDisable(true);
+  };
+
   return (
     <div className="bg-Verydarkcyan text-White h-full w-3/5 rounded-3xl pt-10 pl-9 pr-8  flex flex-col justify-between text-center">
       <div>

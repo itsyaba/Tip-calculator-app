@@ -5,9 +5,9 @@ import Logo from "./assets/logo.svg";
 import { useState } from "react";
 
 export default function App() {
-  const [totalAmount, setTotalAmount] = useState<number>();
-  const [tipAmount, setTipAmount] = useState<number>();
-  const [numberOfPeople, setNumberOfPeople] = useState<number>();
+  const [totalAmount, setTotalAmount] = useState<number | undefined>(undefined);
+  const [tipAmount, setTipAmount] = useState<number | undefined>(undefined);
+  const [numberOfPeople, setNumberOfPeople] = useState<number | undefined>(undefined);
 
   return (
     <>
